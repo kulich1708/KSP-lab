@@ -15,85 +15,54 @@
 				<ul class="menu__list">
 					<li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
 					<li class="menu__item"><a href="catalog.html" class="menu__link">Каталог</a></li>
+					<li class="menu__item"><a href="cart.html" class="menu__link">Корзина</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<hr />
-	<main class="catalog">
-		<div class="catalog__container">
-			<h1 class="catalog__title title">Каталог</h1>
-			<div class="catalog__grid">
-				<article class="catalog__product product-catalog">
-					<div class="product-catalog__top">
-						<img src="img/catalog/block.png" alt="Блок цилиндров" class="product-catalog__img">
-					</div>
-					<div class="product-catalog__bottom">
-						<span class="product-catalog__price">20 000Р</span>
-						<h3 class="product-catalog__title">
-							<a href="product.html" class="product-catalog__link">Блок цилиндров</a>
-						</h3>
-					</div>
-				</article>
-				<article class="catalog__product product-catalog">
-					<div class="product-catalog__top">
-						<img src="img/catalog/head.jpg" alt="Головка блока цилиндров" class="product-catalog__img">
-					</div>
-					<div class="product-catalog__bottom">
-						<span class="product-catalog__price">15 000Р</span>
-						<h3 class="product-catalog__title">
-							<a href="product.html" class="product-catalog__link">Головка блока цилиндров</a>
-						</h3>
-					</div>
-				</article>
-				<article class="catalog__product product-catalog">
-					<div class="product-catalog__top">
-						<img src="img/catalog/kolenval.jpg" alt="Коленвал для двигателя" class="product-catalog__img">
-					</div>
-					<div class="product-catalog__bottom">
-						<span class="product-catalog__price">10 000Р</span>
-						<h3 class="product-catalog__title">
-							<a href="product.html" class="product-catalog__link">Коленвал для двигателя</a>
-						</h3>
-					</div>
-				</article>
-				<article class="catalog__product product-catalog">
-					<div class="product-catalog__top">
-						<img src="img/catalog/porshen.jpg" alt="Поршень с шатуном в сборе" class="product-catalog__img">
-					</div>
-					<div class="product-catalog__bottom">
-						<span class="product-catalog__price">8 000Р</span>
-						<h3 class="product-catalog__title">
-							<a href="product.html" class="product-catalog__link">Поршень с шатуном в сборе</a>
-						</h3>
-					</div>
-				</article>
-				<article class="catalog__product product-catalog">
-					<div class="product-catalog__top">
-						<img src="img/catalog/raspredval.jpg" alt="Распредвал для двигателя"
-							class="product-catalog__img">
-					</div>
-					<div class="product-catalog__bottom">
-						<span class="product-catalog__price">7 000Р</span>
-						<h3 class="product-catalog__title">
-							<a href="product.html" class="product-catalog__link">Распредвал для двигателя</a>
-						</h3>
-					</div>
-				</article>
-				<article class="catalog__product product-catalog">
-					<div class="product-catalog__top">
-						<img src="img/catalog/wheel.png" alt="Колесо" class="product-catalog__img">
-					</div>
-					<div class="product-catalog__bottom">
-						<span class="product-catalog__price">10 000Р</span>
-						<h3 class="product-catalog__title">
-							<a href="product.html" class="product-catalog__link">Колесо</a>
-						</h3>
-					</div>
-				</article>
-			</div>
+	<div class="catalog page">
+		<div class="catalog__filter-open filter-open">
+			<img src="img/filter.png" alt="Фильтр" class="filter-open__img">
 		</div>
-	</main>
+		<div class="catalog__container">
+			<side class="catalog__filters filters">
+				<div class="filters__content">
+					<div class="filters__head">
+						<h2 class="filters__title">Фильтры</h2>
+						<span class="filters__close">х</span>
+					</div>
+					<div class="filters__item item-filters">
+						<p class="item-filters__title"></p>
+						<div class="item-filters__checkboxes">
+							<label class="checkbox item-filters__checkbox">
+								<input type="checkbox" class="checkbox__input" name="" value="">
+								<span class="checkbox__label"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+
+			</side>
+			<main class="catalog__products">
+				<h1 class="catalog__title title">Каталог</h1>
+				<div class="catalog__grid">
+					<article class="catalog__product product-catalog template">
+						<div class="product-catalog__top">
+							<img src="" alt="" class="product-catalog__img">
+						</div>
+						<div class="product-catalog__bottom">
+							<span class="product-catalog__price"></span>
+							<h3 class="product-catalog__title">
+								<a href="product.html" class="product-catalog__link"></a>
+							</h3>
+						</div>
+					</article>
+				</div>
+			</main>
+		</div>
+	</div>
+
 	<hr />
 	<footer class="footer">
 		<div class="footer__container">
@@ -103,6 +72,7 @@
 			</div>
 		</div>
 	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>
