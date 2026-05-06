@@ -15,23 +15,23 @@ class PathManager {
 		return window.location.pathname.includes('cart.html');
 	}
 }
-class GlobalStateManager {
+class LocalStorageManager {
 	static getData(key) {
-		const state = window.APP_STATE;
-		if (!state || !(key in state))
-			return null;
-		return state[key];
+		const data = localStorage.getItem(key)
+		if (!data || data == '[]')
+			return null
+		try {
+			return JSON.parse(data)
+		}
+		catch (error) {
+			console.error(`Ошибка парсинга: ${error}. Загружен каталог по умолчанию`);
+			return null
+		}
 	}
 	static setData(key, value) {
-		if (!window.APP_STATE) {
-			window.APP_STATE = {};
-		}
-		window.APP_STATE[key] = value;
+		localStorage.setItem(key, JSON.stringify(value))
 	}
 	static checkData(config) {
-		if (!window.APP_STATE) {
-			window.APP_STATE = {};
-		}
 		for (const item of Object.entries(config.STORAGE_KEYS)) {
 			if (!this.getData(item[1])) {
 				this.setData(item[1], config[item[0]]);
@@ -302,8 +302,8 @@ class ProductPageRenderer {
 		if (!buyButton) return;
 
 		if (!this.cartCollection) {
-			const productCollection = new ProductCollection(GlobalStateManager.getData('products'));
-			const cartItems = GlobalStateManager.getData(Config.STORAGE_KEYS.CART) || [];
+			const productCollection = new ProductCollection(LocalStorageManager.getData('products'));
+			const cartItems = LocalStorageManager.getData(Config.STORAGE_KEYS.CART) || [];
 			this.cartCollection = new CartCollection(cartItems, productCollection);
 		}
 
@@ -418,7 +418,7 @@ class CartCollection {
 	}
 
 	saveToStorage() {
-		GlobalStateManager.setData(Config.STORAGE_KEYS.CART, this.items);
+		LocalStorageManager.setData(Config.STORAGE_KEYS.CART, this.items);
 	}
 
 	getCartItemsWithDetails() {
@@ -570,10 +570,10 @@ class CartRenderer {
 }
 
 
-GlobalStateManager.checkData(Config)
-const productCollection = new ProductCollection(GlobalStateManager.getData('products'));
-if (!GlobalStateManager.getData(Config.STORAGE_KEYS.CART)) {
-	GlobalStateManager.setData(Config.STORAGE_KEYS.CART, []);
+LocalStorageManager.checkData(Config)
+const productCollection = new ProductCollection(LocalStorageManager.getData('products'));
+if (!LocalStorageManager.getData(Config.STORAGE_KEYS.CART)) {
+	LocalStorageManager.setData(Config.STORAGE_KEYS.CART, []);
 }
 if (PathManager.isCatalogPage()) {
 	const openFilter = document.querySelector('.filter-open__img');
@@ -589,10 +589,10 @@ if (PathManager.isCatalogPage()) {
 			filter.classList.remove('filters--active');
 			document.querySelector('body').classList.remove('lock');
 		})
-	const filterCollection = new FilterCollection(GlobalStateManager.getData('filters'));
+	const filterCollection = new FilterCollection(LocalStorageManager.getData('filters'));
 	const catalogRenderer = new CatalogRenderer();
 	const filterRenderer = new FilterRenderer(filterCollection, productCollection, catalogRenderer);
-	catalogRenderer.renderProducts(GlobalStateManager.getData('products'));
+	catalogRenderer.renderProducts(LocalStorageManager.getData('products'));
 	filterRenderer.renderFilters()
 }
 if (PathManager.isProductPage()) {
@@ -603,7 +603,7 @@ if (PathManager.isProductPage()) {
 
 if (PathManager.isCartPage()) {
 	const cartCollection = new CartCollection(
-		GlobalStateManager.getData(Config.STORAGE_KEYS.CART),
+		LocalStorageManager.getData(Config.STORAGE_KEYS.CART),
 		productCollection
 	);
 	const cartRenderer = new CartRenderer(cartCollection);
