@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "login": "admin",
+        "password_hash": "$2y$12$NnvIFiw6Vj825Nrl4ShRP.BOXz07ODJw4M8\/mkR5frtouex5E8g5e"
+    },
+    {
+        "id": 2,
+        "login": "user",
+        "password_hash": "$2y$12$X5g2W1Y6mvDcSS1\/JvoIp.paEsivAe9hIy1VsHP6wiOGy6bKhJ..K"
+    }
+]

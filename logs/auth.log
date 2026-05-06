@@ -1,0 +1,5 @@
+2026-05-06 17:44:10 | ip=127.0.0.1 | login=admin | action=SUCCESS_LOGIN
+2026-05-06 17:45:11 | ip=127.0.0.1 | login=admin | action=LOGOUT
+2026-05-06 17:46:12 | ip=127.0.0.1 | login=kulich1708 | action=FAIL_LOGIN | info=user_not_found
+2026-05-06 17:47:30 | ip=127.0.0.1 | login=admin | action=SUCCESS_LOGIN
+2026-05-06 17:51:09 | ip=127.0.0.1 | login=admin | action=LOGOUT
